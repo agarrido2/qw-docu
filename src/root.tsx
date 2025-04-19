@@ -6,6 +6,8 @@ import {
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import { isDev } from "@builder.io/qwik";
+import { AuthProvider } from "./context/auth-context";
+import { ToastProvider, Toast } from "./components/toast";
 
 import "./global.css";
 
@@ -29,8 +31,13 @@ export default component$(() => {
         )}
         <RouterHead />
       </head>
-      <body lang="en">
-        <RouterOutlet />
+      <body lang="es">
+        <ToastProvider>
+          <AuthProvider>
+            <RouterOutlet />
+          </AuthProvider>
+          <Toast />
+        </ToastProvider>
         {!isDev && <ServiceWorkerRegister />}
       </body>
     </QwikCityProvider>

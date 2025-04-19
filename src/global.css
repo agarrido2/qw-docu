@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@import "./assets/css/font.css";
+
+
+:root {
+    --color-primary: #0044ff;
+    --color-secondary: #00811f;
+    --color-dark-blue: #006ce9;
+    --color-light-blue: #daf0ff;
+    --color-text: #eee;
+    --color-purple: #ac7ef4;
+    --color-dark-purple: #6000ff;
+    --color-dark-purple-bg: #151934;
+
+    --font-mulish: 'Mulish', sans-serif;
+    --font-jura: 'Jura', sans-serif;
+    --font-quicksand: 'Quicksand', sans-serif;
+    --font-mali: 'Mali', sans-serif;
+}
+.dark {
+    --color-bg: #151934;
+    --color-text: #eee;
+    --color-primary: #0044ff; /* Puedes cambiar este valor si quieres un primary diferente en dark */
+    --color-secondary: #00811f;
+    --color-dark-blue: #006ce9;
+    --color-light-blue: #223344;
+    --color-purple: #ac7ef4;
+    --color-dark-purple: #6000ff;
+    --color-dark-purple-bg: #151934;
+  }
+body { 
+    font-family: var(--font-quicksand); 
+    background-color: var(--color-dark-purple-bg);
+    color: var(--color-text);
+    font-size: 16px;
+    line-height: 1.5;
+}
