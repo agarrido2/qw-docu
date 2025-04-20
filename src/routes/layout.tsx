@@ -1,7 +1,8 @@
 import { component$, Slot, useTask$ } from "@builder.io/qwik";
 import { routeLoader$, routeAction$, type RequestEventBase, type RequestHandler, useLocation, useNavigate } from "@builder.io/qwik-city";
+import { Navbar } from "~/components/layout/partials/Navbar";
 import { createServerSupabaseClient } from "~/integrations/supabase/server";
-import { Navbar } from "~/components/layout/navbar";
+
 
 // Controles de cache
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -36,7 +37,7 @@ export const useLogoutAction = routeAction$(async (_: unknown, requestEv: Reques
 });
 
 // Verificar sesión del usuario desde el servidor
-export const useCheckSession = routeLoader$(async (requestEv) => {
+export const useCheckSession = routeLoader$(async (requestEv: RequestEventBase) => {
   try {
     const supabase = createServerSupabaseClient(requestEv);
     const { data, error } = await supabase.auth.getSession();
@@ -48,7 +49,7 @@ export const useCheckSession = routeLoader$(async (requestEv) => {
     
     return { 
       session: data.session,
-      user: data.session?.user || null 
+      user: data.session?.user || null
     };
   } catch (err) {
     console.error('Error en useCheckSession:', err);
@@ -61,6 +62,8 @@ export default component$(() => {
   const location = useLocation();
   const navigate = useNavigate();
   const sessionData = useCheckSession();
+
+  
   
   // Usar useTask$ para manejar las redirecciones, que es reactivo a cambios en sessionData
   useTask$(({ track }) => {
@@ -88,11 +91,15 @@ export default component$(() => {
   });
   
   return (
-    <div class="min-h-screen flex flex-col bg-gray-50">
-      <Navbar />
-      <main class="flex-grow py-6 px-4 sm:px-6 lg:px-8">
-        <Slot />
-      </main>
+    <div class="min-h-screen flex flex-col">
+      
+       {/* Oculta el Navbar en rutas de autenticación */}
+       {!(location.url.pathname.startsWith('/login') || location.url.pathname.startsWith('/registro') || location.url.pathname.startsWith('/auth')) && (
+         <Navbar location={location} />
+       )}
+       <main class="flex-grow py-6 px-4 sm:px-6 lg:px-8">
+         <Slot />
+       </main>
     </div>
   );
 });

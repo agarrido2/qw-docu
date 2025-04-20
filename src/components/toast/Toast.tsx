@@ -14,6 +14,7 @@ export interface ToastMessage {
 export const Toast = component$(() => {
   const { toasts, removeToast } = useToast();
 
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ track }) => {
     track(() => toasts.value.length);
     toasts.value.forEach((toast: ToastMessage) => {

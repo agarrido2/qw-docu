@@ -8,12 +8,14 @@ import {
   Slot,
   $,
 } from '@builder.io/qwik';
-import type { ToastMessage, ToastType } from '../components/toast/Toast';
+import type { ToastMessage} from '../components/toast/Toast';
+
+import type { QRL } from '@builder.io/qwik';
 
 interface ToastContextType {
   toasts: Signal<ToastMessage[]>;
-  addToast: (toast: Omit<ToastMessage, 'id'>) => void;
-  removeToast: (id: number) => void;
+  addToast: QRL<(toast: Omit<ToastMessage, 'id'>) => void>;
+  removeToast: QRL<(id: number) => void>;
 }
 
 const ToastContext = createContextId<ToastContextType>('toast-context');

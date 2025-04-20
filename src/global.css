@@ -31,7 +31,6 @@
   }
 body { 
     font-family: var(--font-quicksand); 
-    background-color: var(--color-dark-purple-bg);
     color: var(--color-text);
     font-size: 16px;
     line-height: 1.5;

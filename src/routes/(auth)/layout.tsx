@@ -44,7 +44,7 @@ export const useSupabaseAuth = routeLoader$(async (requestEv) => {
     // Filtra tanto Response como RedirectMessage (Qwik City)
     if (
       error instanceof Response ||
-      (typeof error === 'object' && error && error.constructor?.name === 'RedirectMessage')
+      (typeof error === 'object' && error && error.constructor.name === 'RedirectMessage')
     ) {
       throw error;
     }
@@ -63,12 +63,17 @@ export default component$(() => {
   const authData = useSupabaseAuth();
   
   return (
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div class="w-full max-w-md">
-        <div class="text-center mb-8">
-          <h1 class="text-3xl font-extrabold text-gray-900">DocuGest</h1>
-          <p class="mt-2 text-gray-600">Gestión documental simplificada</p>
-          
+    <div class="min-h-screen flex items-start justify-center bg-gradient-to-br from-gray-950 via-gray-900 to-blue-950 relative pt-10 sm:pt-20 pb-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Fondo decorativo con desenfoque */}
+      <div class="absolute inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-blue-900 opacity-40 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-[-80px] right-[-80px] w-[220px] h-[220px] bg-blue-700 opacity-30 rounded-full blur-2xl"></div>
+        <div class="absolute top-1/2 left-1/2 w-[120px] h-[120px] bg-blue-400 opacity-20 rounded-full blur-xl -translate-x-1/2 -translate-y-1/2"></div>
+      </div>
+      <div class="w-full max-w-md z-10">
+        <div class="text-center mb-8 border border-blue-900/40 rounded-xl p-6 shadow-lg bg-gray-900/80 backdrop-blur-md">
+          <h1 class="text-4xl font-extrabold text-blue-200 tracking-tight drop-shadow">Okios Doc</h1>
+          <p class="mt-2 text-blue-100">Gestión documental con IA</p>
           {authData.value.error && (
             <div class="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
               {authData.value.error}

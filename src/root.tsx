@@ -31,7 +31,7 @@ export default component$(() => {
         )}
         <RouterHead />
       </head>
-      <body lang="es">
+      <body lang="es" class="bg-gray-950">
         <ToastProvider>
           <AuthProvider>
             <RouterOutlet />

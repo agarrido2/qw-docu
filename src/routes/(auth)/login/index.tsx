@@ -72,7 +72,7 @@ export const useLoginAction = routeAction$<LoginActionResult>(
 
       // Si no hay error, se ha iniciado sesión correctamente
       // Redirigir a la página de dashboard
-      throw requestEv.redirect(302, '/dashboard/');
+      throw requestEv.redirect(302, '/expedientes/');
     } catch (error: any) {
       if (error instanceof Response) {
         // Este es un error de redirección, lo dejamos pasar
@@ -93,8 +93,8 @@ export default component$(() => {
   const { action, email, password } = useAuthAction(useLoginAction());
 
   return (
-    <div class="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Iniciar sesión</h2>
+    <div class="w-full max-w-md mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold text-center text-gray-100 mb-6">Iniciar sesión</h2>
       
       <Form action={action} class="space-y-4">
         
@@ -105,8 +105,8 @@ export default component$(() => {
           <input
             type="email"
             name="email"
-            placeholder="Correo electrónico"
-            class="w-full p-2 border border-gray-300 rounded"
+            placeholder="user@example.com"
+            class="w-full p-2 border border-gray-300 rounded text-gray-900 font-semibold"
             bind:value={email}
           />
         </div>
@@ -118,8 +118,8 @@ export default component$(() => {
           <input
             type="password"
             name="password"
-            placeholder="Contraseña"
-            class="w-full p-2 border border-gray-300 rounded"
+            placeholder="********"
+            class="w-full p-2 border border-gray-300 rounded text-gray-900 font-semibold"
             bind:value={password}
           />
         </div>

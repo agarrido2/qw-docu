@@ -1,6 +1,6 @@
 import { useSignal, useTask$ } from '@builder.io/qwik';
 import { useToastMessage } from './useToast';
-import { type LoginActionResult } from '~/routes/(auth)/login/index';
+
 
 /**
  * Custom hook para manejar acciones de autenticación reutilizables (login, registro, etc.).
