@@ -45,6 +45,16 @@ export const AuthProvider = component$(() => {
     // Suscribirse a cambios de autenticación
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       user.value = session?.user || null;
+      // --- Sincronizar sesión en cookies para SSR ---
+      if (session?.access_token) {
+        // Nota: Usa el nombre de cookie que espera tu SSR (aquí ejemplo genérico)
+        document.cookie = `sb-access-token=${session.access_token}; Path=/; SameSite=Lax; Secure`;
+        document.cookie = `sb-refresh-token=${session.refresh_token}; Path=/; SameSite=Lax; Secure`;
+      } else {
+        document.cookie = 'sb-access-token=; Path=/; Max-Age=0';
+        document.cookie = 'sb-refresh-token=; Path=/; Max-Age=0';
+      }
+      // --- Fin sincronización sesión ---
       if (
         event === 'SIGNED_IN' &&
         (location.url.pathname.includes('/login') || location.url.pathname.includes('/registro'))
