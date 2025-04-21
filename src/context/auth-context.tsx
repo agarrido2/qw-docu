@@ -45,15 +45,17 @@ export const AuthProvider = component$(() => {
 
     // Suscribirse a cambios de autenticación
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('onAuthStateChange event:', event, session); // <-- AÑADE ESTE LOG
       user.value = session?.user || null;
-      // --- Sincronizar sesión en cookies para SSR ---
       const isHttps = window.location.protocol === 'https:';
       if (session?.access_token) {
         document.cookie = `sb-access-token=${session.access_token}; Path=/; SameSite=Lax;${isHttps ? ' Secure;' : ''}`;
         document.cookie = `sb-refresh-token=${session.refresh_token}; Path=/; SameSite=Lax;${isHttps ? ' Secure;' : ''}`;
+        console.log('Cookie escrita:', document.cookie); // <-- Y ESTE LOG
       } else {
         document.cookie = 'sb-access-token=; Path=/; Max-Age=0';
         document.cookie = 'sb-refresh-token=; Path=/; Max-Age=0';
+        console.log('Cookie borrada');
       }
       // --- Fin sincronización sesión ---
       if (
