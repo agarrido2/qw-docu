@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 
 export const Hero = component$(() => (
-  <section class="relative min-h-[70vh] flex flex-col items-center justify-center px-6 pt-24 pb-16 text-center bg-gradient-to-b from-gray-950 to-gray-900 overflow-hidden" aria-labelledby="hero-title">
+  <section id="hero" class="relative min-h-[70vh] flex flex-col items-center justify-center px-6 pt-24 pb-16 text-center bg-gradient-to-b from-gray-950 to-gray-900 overflow-hidden" aria-labelledby="hero-title">
     <div class="flex justify-center mb-6">
       <span class="bg-blue-800/80 text-blue-100 px-4 py-1 rounded-full text-xs font-semibold tracking-wider shadow-lg border border-blue-600 uppercase" aria-label="Inteligencia Artificial integrada">IA integrada</span>
     </div>

@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 
 export const AISection = component$(() => (
-  <section class="bg-gradient-to-r from-blue-900 via-gray-900 to-gray-950 py-20 px-6">
+  <section id="ai-section" class="bg-gradient-to-r from-blue-900 via-gray-900 to-gray-950 py-20 px-6">
     <div class="max-w-5xl mx-auto text-center">
       <h2 class="text-3xl font-bold mb-6 text-blue-400">Inteligencia Artificial aplicada</h2>
       <p class="text-xl mb-8 text-blue-100">OKIOS utiliza IA para automatizar la clasificación, mejorar documentos y ofrecer búsqueda semántica avanzada.</p>

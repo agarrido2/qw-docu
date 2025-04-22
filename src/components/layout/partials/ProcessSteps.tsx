@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 
 export const ProcessSteps = component$(() => (
-  <section class="py-20 px-6 text-center max-w-5xl mx-auto">
+  <section id="process-steps" class="py-20 px-6 text-center max-w-5xl mx-auto">
     <h2 class="text-3xl font-bold mb-10 text-blue-400">¿Cómo funciona?</h2>
     <div class="grid md:grid-cols-4 gap-8">
       <div class="bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col items-center">

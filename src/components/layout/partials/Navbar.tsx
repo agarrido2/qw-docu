@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { Link, useNavigate, useContent, useLocation } from "@builder.io/qwik-city";
+import { Link, useNavigate, useContent, type useLocation } from "@builder.io/qwik-city";
 import { useCheckSession, useLogoutAction } from "~/routes/layout";
 import MyLogo from '~/assets/images/okios_white.png?jsx';
 
